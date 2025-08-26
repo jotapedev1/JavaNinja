@@ -9,5 +9,9 @@ public class Main {
 
         Uchiha sasuke = new Uchiha("Sasuke Uchiha", 14, "Bola de fogo");
         sasuke.sharinganAtivado();
+
+        Uzumaki naruto = new Uzumaki("Naruto Uzumaki", "Clone das sombras", 19, NivelNinja.GENNIN);
+        naruto.rasengan();
+        naruto.apresentar();
     }
 }
