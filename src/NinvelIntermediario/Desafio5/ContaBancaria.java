@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public abstract class ContaBancaria implements ContaInterface {
     String name;
-    int password;
     double balanceValue;
+    TipoConta tipoConta;
 
     Scanner sc = new Scanner(System.in);
 
@@ -14,28 +14,25 @@ public abstract class ContaBancaria implements ContaInterface {
     @Override
     public abstract double deposit(double depositValue);
 
-    public int changePassword(){
-        int newPassword;
-        if (password == 1234){
-            System.out.println("Qual a nova senha?");
-            newPassword =  sc.nextInt();
-            password = newPassword;
-        }else{
-            System.out.println("Qual seu nome? ");
-            String accountName = sc.nextLine();
-            if (accountName == name){
-                System.out.println("Qual a nova senha?");
-                newPassword =  sc.nextInt();
-                password = newPassword;
+    public void transference(double transferValue, ContaBancaria remetente, ContaBancaria destinatario){
+        if (transferValue > 0){
+            if (remetente.balanceValue >= transferValue){
+                remetente.balanceValue -= transferValue;
+                destinatario.balanceValue += transferValue;
+                System.out.println("Operação efetuada com sucesso!");
+            } else {
+                System.out.println("Saldo insuficiente!");
             }
+        } else {
+            System.out.println("Valor inválido!");
         }
-        return password;
-    };
+    }
 
-    public ContaBancaria(String name, int password, double balanceValue) {
+
+    public ContaBancaria(String name, double balanceValue, TipoConta tipoConta) {
         this.name = name;
-        this.password = password;
         this.balanceValue = balanceValue;
+        this.tipoConta = tipoConta;
     }
 
     public String getName() {
@@ -44,14 +41,6 @@ public abstract class ContaBancaria implements ContaInterface {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getPassword() {
-        return password;
-    }
-
-    public void setPassword(int password) {
-        this.password = password;
     }
 
     public double getBalanceValue() {
