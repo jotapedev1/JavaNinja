@@ -53,8 +53,9 @@ public class ContaCorrente extends ContaBancaria{
                     }
                     break;
                 case 3:
+                    System.out.println("---------------");
                     checkBalance();
-                    System.out.println("|-|-|-|-|-|-|-|-|-|-|");
+                    System.out.println("---------------");
                     break;
                 case 4:
                     double transferValue;
