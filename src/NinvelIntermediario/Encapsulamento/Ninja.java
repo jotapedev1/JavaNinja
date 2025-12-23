@@ -6,14 +6,20 @@ public abstract class Ninja {
     private int age;
     private int missonNumber;
     private double height;
+    private MissionRank missionRank;
 
     //Construtor
-    public Ninja(String name, String village, int age, int missonNumber, double height) {
+    public Ninja(String name, String village, int age, int missonNumber, double height, MissionRank missionRank) {
         this.name = name;
         this.village = village;
         this.age = age;
         this.missonNumber = missonNumber;
         this.height = height;
+        this.missionRank = missionRank;
+    }
+
+    public void showMissionInformation(){
+        System.out.println("Mission rank: " + missionRank + "Mission desc " + MissionRank.getRank);
     }
 
     public String getName() {
@@ -54,5 +60,12 @@ public abstract class Ninja {
 
     public void setHeight(double height) {
         this.height = height;
+    }
+    public MissionRank getMissionRank() {
+        return missionRank;
+    }
+
+    public void setMissionRank(MissionRank missionRank) {
+        this.missionRank = missionRank;
     }
 }
