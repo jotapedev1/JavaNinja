@@ -1,6 +1,7 @@
 package NinvelIntermediario.Encapsulamento;
 
 public abstract class Ninja {
+    //declaração de variáveis
     private String name;
     private String village;
     private int age;
@@ -18,10 +19,13 @@ public abstract class Ninja {
         this.missionRank = missionRank;
     }
 
+    //Metodo para obter info especificamente da missão, será determinada na criação do objeto via construtor na main
     public void showMissionInformation(){
-        System.out.println("Mission rank: " + missionRank + "Mission desc " + MissionRank.getRank);
+        System.out.println("Mission rank: " + missionRank + "Mission desc " + missionRank.getRankDesc() + "Mission level: " + missionRank.getDifficulty());
     }
 
+
+    //GETTERS & SETTERS
     public String getName() {
         return name;
     }
@@ -61,6 +65,7 @@ public abstract class Ninja {
     public void setHeight(double height) {
         this.height = height;
     }
+
     public MissionRank getMissionRank() {
         return missionRank;
     }

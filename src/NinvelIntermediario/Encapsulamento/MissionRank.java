@@ -1,7 +1,7 @@
 package NinvelIntermediario.Encapsulamento;
 
 public enum MissionRank {
-    D("Fácil demais", 2),
+    D ("Fácil demais", 2),
     C ("Fácil", 4),
     B ("Normal", 6),
     A ("Difícil", 8),
@@ -10,11 +10,13 @@ public enum MissionRank {
     private String RankDesc;
     private int Difficulty;
 
+    //criando construtor para todos os itens exiberem as informações abaixo
     MissionRank(String RankDesc, int Dificultty){
         this.RankDesc = RankDesc;
         this.Difficulty = Dificultty;
     }
 
+    //GETTERS e SETTERS pois as infos são privadas
     public String getRankDesc() {
         return RankDesc;
     }
