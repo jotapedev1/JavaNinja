@@ -4,10 +4,10 @@ public enum BijuusEnum {
     SHUKAKU,
     MATATABI,
     ISOBU,
-    SONGOKŪ,
+    SONGOKU,
     KOKUŌ,
     SAIKEN,
-    CHŌMEI,
-    GYŪKI,
+    CHOMEI,
+    GYUKI,
     KURAMA
 }
