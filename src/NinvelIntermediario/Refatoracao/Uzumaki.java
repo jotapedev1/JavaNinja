@@ -5,7 +5,6 @@ import NinvelIntermediario.Refatoracao.Ninja.Ninja;
 import java.util.Random;
 
 public class Uzumaki extends Ninja{
-    Random rand = new Random();
 
     BijuusEnum bijuusEnum;
     String jutsuName = "Rasengan";
@@ -16,5 +15,9 @@ public class Uzumaki extends Ninja{
     }
 
     //TODO Bijuu mode +attackpower - defense
-
+    void bijuuMode{
+        System.out.println("Bijuu mode");
+        setAttackPower(15);
+        setDefensePower(-10);
+    }
 }
