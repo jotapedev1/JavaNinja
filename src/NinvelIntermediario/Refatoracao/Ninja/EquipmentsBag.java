@@ -4,19 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EquipmentsBag<T>{
-    private List<T> equipaments = new ArrayList<>();
+    private List<T> equipments;
 
 
-    public void addEquipaments(T ninjaEquipments){
-        equipaments.add(ninjaEquipments);
-        
+    public void addEquipments(T ninjaEquipments){
+        equipments.add(ninjaEquipments);
+    }
+    public void showEquipments(){
+            System.out.println(equipments);
     }
 
-    public List<T> getEquipaments() {
-        return equipaments;
+    public EquipmentsBag(){
+        this.equipments = new ArrayList<>();
     }
-    public void setEquipaments(List<T> equipaments) {
-        this.equipaments = equipaments;
+
+    public List<T> getEquipments() {
+        return equipments;
+    }
+    public void setEquipments(List<T> equipments) {
+        this.equipments = equipments;
     }
 
 }

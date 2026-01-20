@@ -11,6 +11,17 @@ public abstract class Ninja implements JutsuInterface, CombatInterface {
 
     Random rand = new Random();
 
+    public Ninja(String name, String village, int age, int kunaiNumber, double height, double attackPower, double defensePower, double chakra) {
+        this.name = name;
+        this.village = village;
+        this.age = age;
+        this.kunaiNumber = kunaiNumber;
+        this.height = height;
+        this.attackPower = attackPower;
+        this.defensePower = defensePower;
+        this.chakra = chakra;
+    }
+
     @Override
     /*Implementa interface de Combate*/
     public void attack() {
@@ -22,13 +33,13 @@ public abstract class Ninja implements JutsuInterface, CombatInterface {
         System.out.println(name + ": Defended the target");
     }
 
-    public void attack(double attackPower, double defensePower, double oppDefensePower){
+    public void attack(double attackPower, double defensePower, Object oppDefensePower){
         int criticalChance = rand.nextInt(0, 10);
         if (criticalChance <= 4){
             oppDefensePower -= attackPower*0.3;
         }
         if (attackPower > oppDefensePower){
-            oppDefensePower -= attackPower*0.2;
+            oppDefensePower -= attackPower;
             attackPower -= attackPower*0.1;
         }else{
             defensePower -= attackPower*0.35;
@@ -71,8 +82,8 @@ public abstract class Ninja implements JutsuInterface, CombatInterface {
         System.out.println(name + ": Used jutsu");
     };
     //overload?
-    public void executeJutsu(String jutuName){
-        System.out.println(name + " used jutsu: " + jutuName);
+    public void executeJutsu(String jutsuName){
+        System.out.println(name + " used jutsu: " + jutsuName);
     }
     @Override
     public void useChakra(){

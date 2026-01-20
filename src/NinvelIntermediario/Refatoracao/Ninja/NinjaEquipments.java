@@ -11,24 +11,21 @@ public class NinjaEquipments {
 
     @Override
     public String toString() {
-        return "NinjaEquipments{" +
-                "name='" + name + '\'' +
-                ", quantity=" + quantity +
+        return "NinjaEquipments{" + "\n" +
+                "name='" + name + '\''+ "\n" +
+                ", quantity=" + quantity + "\n" +
                 '}';
     }
 
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public int getQuantity() {
         return quantity;
     }
-
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
