@@ -33,7 +33,7 @@ public abstract class Ninja implements JutsuInterface, CombatInterface {
         System.out.println(name + ": Defended the target");
     }
 
-    public void attack(double attackPower, double defensePower, Object oppDefensePower){
+    public void attack(double attackPower, double defensePower, double oppDefensePower){
         int criticalChance = rand.nextInt(0, 10);
         if (criticalChance <= 4){
             oppDefensePower -= attackPower*0.3;
