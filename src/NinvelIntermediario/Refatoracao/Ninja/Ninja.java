@@ -9,6 +9,8 @@ public abstract class Ninja implements JutsuInterface, CombatInterface {
 
     private double attackPower, defensePower, chakra;
 
+    protected EquipmentsBag<NinjaEquipments> NinjaBag;
+
     Random rand = new Random();
 
     public Ninja(String name, String village, int age, int kunaiNumber, double height, double attackPower, double defensePower, double chakra) {
@@ -20,6 +22,7 @@ public abstract class Ninja implements JutsuInterface, CombatInterface {
         this.attackPower = attackPower;
         this.defensePower = defensePower;
         this.chakra = chakra;
+        this.NinjaBag = new EquipmentsBag<>();
     }
 
     @Override
@@ -29,32 +32,43 @@ public abstract class Ninja implements JutsuInterface, CombatInterface {
     };
 
     @Override
-    public void defend() {
+    public void defense() {
         System.out.println(name + ": Defended the target");
     }
 
-    public void attack(double attackPower, double defensePower, double oppDefensePower){
-        int criticalChance = rand.nextInt(0, 10);
-        if (criticalChance <= 4){
-            oppDefensePower -= attackPower*0.3;
+    public void attack(Ninja opponent) {
+        int criticalChance = rand.nextInt(10);
+
+        double damage = getAttackPower();
+
+        if (criticalChance <= 4) {
+            damage *= 1.3; // crítico
         }
-        if (attackPower > oppDefensePower){
-            oppDefensePower -= attackPower;
-            attackPower -= attackPower*0.1;
-        }else{
-            defensePower -= attackPower*0.35;
+
+        if (damage > opponent.getDefensePower()) {
+            opponent.setDefensePower(opponent.getDefensePower() - damage * 0.2);
+            setAttackPower(getAttackPower() - damage * 0.1);
+        } else {
+            setDefensePower(getDefensePower() - damage * 0.35);
         }
-        return;
     }
 
-    public void defense(double defensePower, double oppAttackPower,  double oppDefensePower) {
+
+    public void defense(Ninja opponent) {
         int criticalChance = rand.nextInt(0, 10);
 
-        if (defensePower < oppDefensePower) {
-            defensePower -= oppAttackPower * 0.2;
-            oppDefensePower -= oppAttackPower * 0.1;
+        double damage = opponent.getAttackPower();
+        double defense = getDefensePower();
+
+        if (criticalChance <= 4) {
+            damage *= 1.3; // crítico
+        }
+
+        if (defense < damage) {
+            setDefensePower(getDefensePower() - damage * 0.2);
+            opponent.setAttackPower(opponent.getAttackPower() - damage * 0.1);
         } else {
-            oppDefensePower -= oppAttackPower * 0.35;
+            opponent.setDefensePower(opponent.getDefensePower() - damage * 0.35);
         }
     }
 
@@ -63,11 +77,12 @@ public abstract class Ninja implements JutsuInterface, CombatInterface {
         System.out.println(name + ": Shoot a Kunai");
     }
 
-    int shootKunai(int kunaiNumber, double oppDefensePower) {
+    public int shootKunai(int kunaiNumber, Ninja opponent) {
         int hitChance = rand.nextInt(0, 10);
         double kunaiDamage = 12;
+
         if (hitChance <= 3){
-            oppDefensePower -= kunaiDamage;
+            opponent.setDefensePower(opponent.getDefensePower() - kunaiDamage);
             kunaiNumber --;
         }else{
             System.out.println(getName() + " Missed the kunai");
@@ -165,6 +180,12 @@ public abstract class Ninja implements JutsuInterface, CombatInterface {
 
     public void setKunaiNumber(int kunaiNumber) {
         this.kunaiNumber = kunaiNumber;
+    }
+    public EquipmentsBag<NinjaEquipments> getNinjaBag(){
+        return NinjaBag;
+    }
+    public void setNinjaBag(EquipmentsBag<NinjaEquipments> ninjaBag) {
+        NinjaBag = ninjaBag;
     }
 }
 

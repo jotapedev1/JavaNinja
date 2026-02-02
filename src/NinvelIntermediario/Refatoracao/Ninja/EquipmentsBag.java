@@ -6,7 +6,6 @@ import java.util.List;
 public class EquipmentsBag<T>{
     private List<T> equipments;
 
-
     public void addEquipments(T ninjaEquipments){
         equipments.add(ninjaEquipments);
     }

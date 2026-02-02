@@ -18,12 +18,12 @@ public class Uzumaki extends Ninja{
         System.out.println("My name is: " + getName() + "\n I'm from " + getVillage() + " and I'm " + getAge());
     }
 
-    /*//TODO Bijuu mode +attackpower - defense
+    //TODO Bijuu mode +attackpower - defense
     void bijuuMode(){
         System.out.println(getName() + " Entered the Bijuu mode");
-        setAttackPower(15);
-        setDefensePower(-10);
-    }*/
+        setAttackPower(getAttackPower() + 15);
+        setDefensePower(getDefensePower() -10);
+    }
 
 
 }

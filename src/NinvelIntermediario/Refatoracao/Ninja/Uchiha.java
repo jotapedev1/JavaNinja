@@ -16,6 +16,6 @@ public class Uchiha extends Ninja implements SharinganInterface{
     @Override
     public void normalSharingan() {
         System.out.println(getName() + " Activated Sharingan");
-        setDefensePower(20);
+        setDefensePower(getDefensePower() + 20);
     }
 }
